@@ -1,6 +1,6 @@
 from sqlalchemy import Column,Integer,String,create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship,sessionmaker
 
 Base = declarative_base()
 
@@ -58,5 +58,24 @@ class Owner(Base):
             self._phone_number = phone_number
         else:
             raise ValueError("Phone number must be an integer")
+ 
+    @classmethod
+    def find_by_id(cls, id):
+        pass
 
-    
+    @classmethod
+    def find_by_name(cls,name):
+        pass
+
+    @classmethod
+    def create():
+        pass
+
+    @classmethod
+    def update():
+        pass
+
+    @classmethod
+    def delete():
+        pass
+        

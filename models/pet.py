@@ -1,8 +1,9 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,Boolean,ForeignKey,create_engine
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship,sessionmaker
+from models.owner import Base
 
-Base = declarative_base()
+
 
 class Pet(Base):
     __tablename__ = "pets"
@@ -97,4 +98,26 @@ class Pet(Base):
             self._owner_id = owner_id
         else:
             raise ValueError("owner_id must refer to an owner in the database")
+@classmethod
+def get_all(cls):
+    pass
+    
+@classmethod
+def find_by_id(cls,id):
+    pass
 
+@classmethod
+def find_by_pet_type(cls,pet_type):
+    pass
+
+@classmethod
+def create():
+    pass
+
+@classmethod
+def update():
+    pass
+
+@classmethod
+def delete():
+    pass
