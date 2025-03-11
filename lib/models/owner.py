@@ -10,3 +10,5 @@ class Owner(Base):
     name = Column(String())
     email = Column(String())
     phone_number = Column(Integer())
+
+    pets = relationship("Pet", back_populates="owner")
