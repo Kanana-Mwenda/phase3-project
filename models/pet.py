@@ -21,12 +21,13 @@ class Pet(Base):
     #class methods
     all = {}
 
-    def __init__(self,name,pet_type,breed,age,adopted,owner_id,id=None):
+    def __init__(self,name,pet_type,breed,age,gender,adopted,owner_id,id=None):
         self.id = id
         self.name = name
         self.pet_type = pet_type
         self.breed = breed
         self.age = age
+        self.gender = gender
         self.adopted = adopted
         self.owner_id = owner_id
 
@@ -77,6 +78,17 @@ class Pet(Base):
         else:
             raise ValueError("Age must be an integer")
 
+    @property #gender
+    def gender(self):
+        return self._gender
+
+    @gender.setter
+    def gender(self,gender):
+        if isinstance(gender,str):
+            self._gender =gender
+        else:
+            raise ValueError("Gneder must be a string")
+
     @property #adopted
     def adopted(self):
         return self._adopted
@@ -101,7 +113,7 @@ class Pet(Base):
 @classmethod
 def get_all(cls):
     pass
-    
+
 @classmethod
 def find_by_id(cls,id):
     pass
