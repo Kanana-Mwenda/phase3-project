@@ -1,6 +1,5 @@
 def start_app():
-    print("Welcome User,what's your name?")
     name = input("Enter Name: ")
-    print(f"Nice to know you {name}")
+    print(f"Welcome {name} to Pet Adoption")
 
 start_app()
