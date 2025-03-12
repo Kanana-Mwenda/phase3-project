@@ -19,13 +19,7 @@ class Owner(Base):
 
     pets = relationship("Pet", back_populates="owner")
 
-#     def __init__(self, name, email, phone_number, id=None):
-#         self.id = id
-#         self.name = name
-#         self.email = email
-#         self.phone_number = phone_number
-
-#     def __repr__(self):
-#         return f"<Owner {self.id}: {self.name}, {self.email}, {self.phone_number}>"
+    def __repr__(self):
+        return f"<Owner {self.id}: {self.name}, {self.email}, {self.phone_number}>"
 
 
