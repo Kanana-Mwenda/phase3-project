@@ -5,12 +5,12 @@ def exit_program():
     print("Goodbye!")
     exit()
 
-def list_owners():
+def view_owners():
     owners = Owner.get_all()
     for owner in owners:
         print(owner)
 
- def find_owner_by_id():
+def find_owner_by_id():
     id = input("Enter the owner's id:")  
     owner = Owner.find_by_id(id)
     if owner:
@@ -65,7 +65,7 @@ def delete_owner():
     else:
         print("Owner {id} not found")
 
-def list_owner_pets():
+def view_owner_pets():
     id = input("Enter the owner's id:")
     owner = Owner.find_by_id(id)
     if owner:
@@ -73,7 +73,7 @@ def list_owner_pets():
     else:
         print(f"Owner {id} not found")
 
-def list_pets():
+def view_pets():
     pets = Pet.get_all()
     for pet in pets:
         print(pet)

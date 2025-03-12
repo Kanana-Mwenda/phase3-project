@@ -1,18 +1,18 @@
 from helpers import (
     exit_program,
-    list_owners,
+    view_owners,
     find_owner_by_id,
     find_owner_by_name,
     create_owner,
     update_owner,
     delete_owner,
-    list_pets,
+    view_pets,
     find_pet_by_id,
     find_pet_by_pet_type,
     create_pet,
     update_pet,
     delete_pet,
-    list_owner_pets
+    view_owner_pets
 )
 
 def main():
@@ -22,7 +22,7 @@ def main():
         if choice == "0":
             exit_program()
         elif choice == "1":
-            list_owners()
+            view_owners()
         elif choice == "2":
             find_owner_by_id()
         elif choice == "3":
@@ -34,7 +34,7 @@ def main():
         elif choice == "6":
             delete_owner()
         elif choice == "7":
-            list_pets()
+            view_pets()
         elif choice == "8":
             find_pet_by_id()
         elif choice == "9":
@@ -46,13 +46,26 @@ def main():
         elif choice == "12":
             delete_pet()
         elif choice == "13":
-            list_owner_pets()
+            view_owner_pets()
         else:
             print("Invalid choice")
 
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
-
-if __name__ == "main":
+    print("1: View all owners")
+    print("2: Find owner by id")
+    print("3: Find owner by name")
+    print("4: Create owner")
+    print("5: Update owner")
+    print("6: Delete owner")
+    print("7: View all pets")
+    print("8: Find pet by id")
+    print("9: Find pet by pet type")
+    print("10: Create pet")
+    print("11: Update pet")
+    print("12: Delete pet")
+    print("13: View all owner pets")
+    
+if __name__ == "__main__":
     main()
