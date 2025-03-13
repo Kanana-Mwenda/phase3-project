@@ -38,32 +38,23 @@ def create_owner():
 
 def update_owner():
     id = input("Enter the owner's id:")
-    owner = Owner.find_by_id(id)
-    if owner:
-        try:
-            name = input("Enter the owner's new name:")
-            owner.name = name
-            email = input("Enter the owner's new email:")
-            owner.email = email
-            phone_number = input("Enter the owner's new phone number:")
-            owner.phone_number = phone_number
+    name = input("Enter the owner's new name:")
+    email = input("Enter the owner's new email:")
+    phone_number = input("Enter the owner's new phone number:")
 
-            owner.update()
-            print(f"Successfully updated {owner}")
-
-        except Exception as exc:
-            print("Error updating owner:", exc)
+    updated_owner= Owner.update(id,name,email,phone_number)
+    if updated_owner:       
+        print(f"Successfully updated {updated_owner}")
     else:
         print(f"Owner {id} not found")
 
 def delete_owner():
     id = input("Enter the owner's id:")
-    owner = Owner.find_by_id(id)
-    if owner:
-        owner.delete()
-        print(f"Owner {id} deleted")
+    deleted_owner = Owner.delete(id)
+    if deleted_owner:
+        print(f"Successfully deleted {deleted_owner}")
     else:
-        print("Owner {id} not found")
+        print(f"Owner {id} not found")
 
 def view_owner_pets():
     id = input("Enter the owner's id:")
@@ -80,7 +71,7 @@ def view_pets():
 
 def find_pet_by_id():
     id = input("Enter the pet's id:")
-    pets = Pet.find_by_id(id)
+    pet = Pet.find_by_id(id)
     if pet:
         print(pet)
     else:
@@ -89,8 +80,9 @@ def find_pet_by_id():
 def find_pet_by_pet_type():
     pet_type = input("Enter the pet type:")
     pets = Pet.find_by_pet_type(pet_type)
-    if pet:
-        print(pet)
+    if pets:
+        for pet in pets:
+            print(f"ID: {pet.id}, Name: {pet.name}, Breed: {pet.breed}, Age: {pet.age}, Adopted: {pet.adopted}")
     else:
         print(f"Pet with {pet_type} not found")
 
@@ -101,51 +93,46 @@ def create_pet():
     age = input("Enter the pet's age:")
     adopted = input("Enter the pet's adopted status:")
     owner_id = input("Enter the pet's owner id:")
+
     try:
         pet = Pet.create(name,pet_type,breed,age,adopted,owner_id)
         print(f"Successfully created {pet}")
     except Exception as exc:
         print("Error creating pet:",exc)
-
+    
 def update_pet():
-    id = input("Enter the pet's id")
+    id = input("Enter the pet's id:")
+    name = input("Enter the pet's name:")
+    pet_type = input("Enter the pet's type:")
+    breed = input("Enter the pet's breed:")
+    age = input("Enter the pet's age:")
+    adopted = input("Enter the pet's adopted status:")
+    owner_id = input("Enter the pet's owner id:")
+
     pet = Pet.find_by_id(id)
-    if pet:
-        try:
-            name = input("Enter the pet's new name:")
-            pet.name = name
-            pet_type = input("Enter the pet's new type:")
-            pet.pet_type = pet_type
-            breed = input("Enter the pet's new breed:")
-            pet.breed = breed
-            age = input("Enter the pet's new age:")
-            pet.age = age
-            gender = input("Enter the pet's new gender:")
-            pet.gender = gender
-            adopted = input("Enter the pet's new adopted status:")
-            pet.adopted = adopted
-            owner_id = input("Enter the pet's new owner_id:")
-            pet.owner_id = owner_id
-            
-            pet.update()
-            print(f"Successfully updated {pet}")
-        except Exception as exc:
-            print("Error updating {pet}:",exc)
+    updated_pet = Pet.update(id,)
+    if updated_pet:
+        print(f"Successfully updated {updated_pet}")
+    else:
+        print("Pet {id} not found")
 
 def delete_pet():
     id = input("Enter the pet's id")
-    pet = Pet.find_by_id(id)
-    if pet:
-        pet.delete()
-        print(f"Successfully deleted {pet}")
+    deleted_pet= Pet.delete(id)
+    if deleted_pet:
+        print(f"Successfully deleted {deleted_pet}")
     else:
-        print("Pet not found")
+        print("Pet {id} not found")
 
-def list_owner_pets():
+
+def view_owner_pets():
     id = input("Enter the owner's id:")
     owner = Owner.find_by_id(id)
     if owner:
-        print(owner.pets())
+        if owner.pets:
+            print(f"Pets owned by {owner.name}:")
+        for pet in owner.pets:
+            print(pet)
     else:
         print(f"Owner {id} not found")
-
+                    
