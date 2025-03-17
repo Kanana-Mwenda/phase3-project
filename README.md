@@ -21,6 +21,7 @@ The app is a Python-based Command Line Interface (CLI) application designed to s
 Ensure you have Python installed (version 3.8+ recommended).
 
 ### Clone the Repository
+Fork the repository
 git clone https://github.com/YOUR-GITHUB-USERNAME/phase3-project.git
 cd phase3-project
 
